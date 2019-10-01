@@ -11,6 +11,7 @@ script:
 
 after_success:
   - docker build -t vijaybhatt23051989/multi-client ./client
+  - docker build -t vijaybhatt23051989/multi-client:v1 ./client
   - docker build -t vijaybhatt23051989/multi-nginx ./nginx
   - docker build -t vijaybhatt23051989/multi-server ./server
   - docker build -t vijaybhatt23051989/multi-worker ./worker
@@ -18,6 +19,7 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push images to docker hub
   - docker push vijaybhatt23051989/multi-client
+  - docker push vijaybhatt23051989/multi-client:v1
   - docker push vijaybhatt23051989/multi-nginx
   - docker push vijaybhatt23051989/multi-server
   - docker push vijaybhatt23051989/multi-worker
